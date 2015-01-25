@@ -70,5 +70,5 @@ newData1 <- lapply(subjects, function(x) colMeans(x[,wantedCols]))
 write.table(newData1, file = OutFilename, append = FALSE, sep = "\t",
             eol = "\n", dec = ".", row.names = FALSE, col.names = TRUE)
 
-#  All done, reset the path back to what is was
+#  All done, reset the path back to what is was before we started
 setwd(oldPath)
