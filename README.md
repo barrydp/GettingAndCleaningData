@@ -31,3 +31,10 @@ fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to
 
 The data is divided up into two equal sets: training and test.  This implies that it was originally gathered with the 
 purpose of training and testing a neural net.
+
+The script performs the following operations on the data:
+1. Reads in the relevant files from both the test and train directories
+2. Combine the data into a single data set
+3. Create a new data set that contains only the columns that contain average (mean) and standard deviation data. To this is added two columns that add he subject and activity data.
+4. The columns are named appropriately.
+5. This data is then saved as a separate file.
