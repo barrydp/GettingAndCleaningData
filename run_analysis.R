@@ -1,18 +1,20 @@
 #  Set the variable "path" to the path where everything is, then use that to set the wd
-path <- "G:\\Coursera\\DataScientist\\Getting and Cleaning Data\\Week 3\\getdata_projectfiles_UCI HAR Dataset\\UCI HAR Dataset"
+oldPath <- getwd()
+path <- "g:\\Coursera\\coursera\\DataScientist\\Getting and Cleaning Data\\Week 3\\getdata_projectfiles_UCI HAR Dataset\\UCI HAR Dataset"
 setwd(path)
 
 # Set up the names of the files to read
 TestInFilenameData <- paste(path,"\\test\\X_test.txt", sep="")
 TestInFilenameActivity <- paste(path,"\\test\\y_test.txt", sep="")
+TestSubjectInFilename <- paste(path,"\\test\\subject_test.txt", sep="")
 TrainInFilenameData <- paste(path,"\\train\\X_train.txt", sep="")
 TrainInFilenameActivity <- paste(path,"\\train\\y_train.txt", sep="")
-TestSubjectInFilename <- paste(path,"\\test\\subject_test.txt", sep="")
 TrainSubjectInFilename <- paste(path,"\\train\\subject_train.txt", sep="")
 
 ActivityInFilename <- paste(path,"\\activity_labels.txt", sep="")
 Names <- paste(path,"\\features.txt", sep="")
 OutFilename <- paste(path, "\\CleanData.txt", sep="")
+#OutFilename1 <- paste(path, "\\Subject.txt", sep="")
 
 # Read the data
 trainData <- read.table(TrainInFilenameData, header=FALSE)
@@ -65,6 +67,8 @@ subjects <- split(newData, paste(newData$Subject,newData$Activity))
 newData1 <- lapply(subjects, function(x) colMeans(x[,wantedCols]))
 
 # write the clean dataset
-write.table(newData1, file = OutFilename, append = FALSE, sep = ",",
+write.table(newData1, file = OutFilename, append = FALSE, sep = "\t",
             eol = "\n", dec = ".", row.names = FALSE, col.names = TRUE)
-#save(newData1, file = OutFilename)
+
+#  All done, reset the path back to what is was
+setwd(oldPath)
