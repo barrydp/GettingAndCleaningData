@@ -38,3 +38,4 @@ The script performs the following operations on the data:
 3. Create a new data set that contains only the columns that contain average (mean) and standard deviation data. To this is added two columns that add he subject and activity data.
 4. The columns are named appropriately.
 5. This data is then saved as a separate file.
+
